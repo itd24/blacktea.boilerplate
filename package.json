@@ -1,0 +1,44 @@
+{
+  "name": "blacktea.boilerplate",
+  "version": "0.0.1",
+  "description": "Yet another Gulp+Webpack boilerplate",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "gulp",
+    "build": "gulp -production",
+    "develop": "gulp -build"
+  },
+  "dependencies": {
+    "console-debug": "^0.3.3",
+    "glob": "^7.0.5",
+    "node-json-db": "^0.7.2",
+    "blacktea.configmanager": "^0.1.0",
+    "blacktea.ns": "^0.1.1",
+    "blacktea.exceptions": "^0.1.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.0.3",
+    "chai": "^3.5.0",
+    "css-loader": "^0.23.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.2",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-util": "^3.0.7",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1",
+    "lodash": "^4.13.1",
+    "moment": "^2.14.1",
+    "node-sass": "^3.4.1",
+    "postcss-loader": "^0.8.0",
+    "sass-loader": "^3.1.1",
+    "source-map-loader": "^0.1.5",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.6"
+  },
+  "entryPoints": {},
+  "sourceDir": "App/src",
+  "compileDir": "App/dist",
+  "documentationDir": "App/doc",
+  "configurationDirectory": "Config"
+}

@@ -1,0 +1,36 @@
+{
+    "main": ["watch","watch-webpack"],
+    "used": [
+        "webpack", "watch-webpack", "jshint", "watch"
+    ],
+    "tasks": {
+        "webpack": {
+            "module": "webpack",
+            "dependencies": [],
+            "args": {
+                "watch": false
+            }
+        },
+        "watch-webpack": {
+            "module": "webpack",
+            "dependencies": [],
+            "args": {
+                "watch": true
+            }
+        },
+        "watch": {
+            "module": "gulpwatch",
+            "dependencies": ["jshint"],
+            "args": {
+                "tasks": [{
+                    "tasks": ["jshint"],
+                    "path": "{{config.get('common','appPath')}}\\src\\js\\*.js"
+                }]
+            }
+        },
+        "jshint": {
+            "module": "jshint",
+            "dependencies": []
+        }
+    }
+}

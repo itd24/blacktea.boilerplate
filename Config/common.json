@@ -1,0 +1,6 @@
+{
+    "timestamp": "1477737774",
+    "dateTime": "29.10.2016 12:42:54",
+    "rootPath": "E:\\HOMEWORK\\projects\\commercial\\tctooltip",
+    "appPath": "{{config.get('common','rootPath')}}\\Apps"
+}

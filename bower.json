@@ -1,0 +1,14 @@
+{
+  "name":"blacktea.boilerplate",
+  "description": "Yet another Gulp+Webpack boilerplate",
+  "main": "gulpfile.js",
+  "dependencies":{
+
+  },
+  "devDependencies": {
+  	
+  },
+  "keywords":["boilerplate","blacktea","gulp","webpack"],
+  "authors":["itd24 <ziga.petek2@gmail.com>"],
+  "private": true
+}

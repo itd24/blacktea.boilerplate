@@ -1,14 +1,17 @@
-'use strict';
-var webpack = require('webpack'),
-    path = require('path'),
-    ExtractTextPlugin = require("extract-text-webpack-plugin"),
-    CleanWebpackPlugin = require('clean-webpack-plugin'),
-    _ = require("lodash"),
-    configmanager = require("blacktea.configmanager");
+import webpack from 'webpack';
+import path from 'path';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import CleanWebpackPlugin from 'clean-webpack-plugin';
+import _ from 'lodash';
+import configmanager from 'blacktea.configmanager';
 
-var rootPath = configmanager.get("common", "rootPath");
-var appsPath = configmanager.get("common", "appPath");
-var distPath = path.resolve(appsPath,"dist");
+var rootPath = configmanager.get("common", "rootPath"),
+appsPath = configmanager.get("common", "appPath"),
+distPath = path.resolve(appsPath,"dist","assets");
+
+import CSSLoader from '../Library/Loaders/CSS';
+import SassLoader from '../Library/Loaders/Sass';
+import FontsLoader from '../Library/Loaders/Fonts';
 
 module.exports = {
     context: appsPath,
@@ -27,15 +30,14 @@ module.exports = {
     //*/
     module: {
         loaders: [
-            require("../Library/Loaders/CSS"),
-            require("../Library/Loaders/Sass"),
-            require("../Library/Loaders/Fonts"),
+            CSSLoader,SassLoader,FontsLoader
         ]
     },
     plugins: [
+    
         new CleanWebpackPlugin([distPath], {
             root: rootPath
-        }),
+        }),        
         //new webpack.optimize.UglifyJsPlugin({minimize: true}),
         new ExtractTextPlugin("[name].min.css")
     ]

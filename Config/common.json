@@ -1,6 +1,7 @@
 {
-    "timestamp": "1477737774",
-    "dateTime": "29.10.2016 12:42:54",
-    "rootPath": "E:\\HOMEWORK\\projects\\commercial\\tctooltip",
-    "appPath": "{{config.get('common','rootPath')}}\\Apps"
+    "timestamp": "1478018323",
+    "dateTime": "01.11.2016 17:38:43",
+    "rootPath": "E:\\HOMEWORK\\projects\\blacktea.boilerplate\\blacktea.boilerplate",
+    "appDirectory": "Apps",
+    "appPath": "{{config.get('common','rootPath')}}\\{{config.get('common','appDirectory')}}"
 }

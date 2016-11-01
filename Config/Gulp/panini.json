@@ -1,0 +1,11 @@
+{
+	"htmlPath":"{{config.get('common','appDirectory')}}/src/html",
+	"paths": {
+		"root": "{{config.get('Gulp/panini','htmlPath')}}/pages/",
+		"layouts": "{{config.get('Gulp/panini','htmlPath')}}/layouts/",
+		"partials": "{{config.get('Gulp/panini','htmlPath')}}/partials/",
+		"data": "{{config.get('Gulp/panini','htmlPath')}}/data/",
+		"helpers": "{{config.get('Gulp/panini','htmlPath')}}/helpers/"
+	},
+	"destination":"{{config.get('common','appDirectory')}}/dist/html"
+}

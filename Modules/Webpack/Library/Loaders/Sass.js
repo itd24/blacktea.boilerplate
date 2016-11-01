@@ -1,4 +1,4 @@
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 module.exports = {
 	test: /\.scss$/,

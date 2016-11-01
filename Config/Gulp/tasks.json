@@ -1,7 +1,7 @@
 {
-    "main": ["watch","watch-webpack"],
+    "main": ["watch","webpack-dev-server"],
     "used": [
-        "webpack", "watch-webpack", "jshint", "watch"
+        "webpack", "webpack-watch", "webpack-dev-server", "jshint", "panini", "watch"
     ],
     "tasks": {
         "webpack": {
@@ -11,26 +11,37 @@
                 "watch": false
             }
         },
-        "watch-webpack": {
+        "webpack-watch": {
             "module": "webpack",
             "dependencies": [],
             "args": {
-                "watch": true
+                "task": "webpackWatch"
+            }
+        },
+        "webpack-dev-server": {
+            "module": "webpack",
+            "dependencies": [],
+            "args": {
+                "task": "webpackDevServer"
             }
         },
         "watch": {
             "module": "gulpwatch",
-            "dependencies": ["jshint"],
+            "dependencies": ["panini"],
             "args": {
                 "tasks": [{
-                    "tasks": ["jshint"],
-                    "path": "{{config.get('common','appPath')}}\\src\\js\\*.js"
+                    "tasks": ["panini"],
+                    "path": "{{config.get('common','appPath')}}\\src\\html\\**\\*.html"
                 }]
             }
         },
         "jshint": {
             "module": "jshint",
             "dependencies": []
+        },
+        "panini":{
+            "module":"panini",
+            "dependencies":[]
         }
     }
 }

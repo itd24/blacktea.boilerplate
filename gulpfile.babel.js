@@ -1,20 +1,20 @@
 /**
  * the gulpfile. It loads the subtasks via an utility function
  */
-'use strict';
 
-var gulp = require('gulp');
-var _ = require("lodash");
-var plugins = require("gulp-load-plugins");
-var framework = require("./Core/Main");
-var configmanager = require("blacktea.configmanager");
+import gulp from 'gulp';
+import _ from 'lodash';
+import plugins from 'gulp-load-plugins';
+import framework from './Core/Main';
+import configmanager from 'blacktea.configmanager';
+import Ns from 'blacktea.ns'; 
 
-require("blacktea.ns").root(".");
+Ns.root('.');
 
 framework.modules.require("Gulp.ConfigUtilities").setCommonConfiguration();
-var tasks = configmanager.getOrDefault("Gulp/tasks","/tasks",{});
-var usedTasks = configmanager.getOrDefault("Gulp/tasks","/used",[]);
-var defaultTasks = configmanager.getOrDefault("Gulp/tasks","/main",[]);
+var tasks = configmanager.getOrDefault("Gulp/tasks","/tasks",{}),
+usedTasks = configmanager.getOrDefault("Gulp/tasks","/used",[]),
+defaultTasks = configmanager.getOrDefault("Gulp/tasks","/main",[]);
 if(!_.isArray(defaultTasks))
     defaultTasks = [defaultTasks];
 var resolved = framework.modules.require("Gulp.ConfigUtilities").loadTasks(tasks,usedTasks,framework);

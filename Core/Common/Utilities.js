@@ -1,8 +1,8 @@
-'use strict';
-var _ = require("lodash");
-var path = require("path");
+import _ from 'lodash';
+import path from 'path';
+import Ns from 'blacktea.ns';
 
-var root = require("blacktea.ns").root(); //path.resolve(__dirname,"..","..");
+var root = Ns.root(); //path.resolve(__dirname,"..","..");
 
 var privateMethods = {
 	recursiveJoinPath(args){

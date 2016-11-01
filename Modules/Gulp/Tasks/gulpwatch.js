@@ -1,7 +1,7 @@
-var configManager = require("blacktea.configmanager");
-var _ = require("lodash");
-var path = require("path");
-var jshint = require("gulp-jshint");
+import configManager from 'blacktea.configmanager';
+import _ from 'lodash';
+import path from 'path';
+import jshint from 'gulp-jshint';
 
 module.exports = function(framework) {
 

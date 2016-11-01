@@ -1,11 +1,11 @@
 /**
  * webpack gulp task. Can be used for one time compile or watch
  */
-var webpack = require('webpack');
-var path = require('path');
-var gutil = require('gulp-util');
-var configManager = require("blacktea.configmanager");
-var _ = require("lodash");
+import webpack from 'webpack';
+import path from 'path';
+import gutil from 'gulp-util';
+import configManager from 'blacktea.configmanager';
+import _ from 'lodash';
 
 module.exports = function(framework) {
 	return {
@@ -23,20 +23,17 @@ module.exports = function(framework) {
 				webpackConfigurations = [webpackConfigurations];
 
 			var loadedWebpackConfigs = [];
-			for(var i in webpackConfigurations){
-				var configuration = framework.modules.require("Webpack.Configurations."+webpackConfigurations[i]);
-				webpackConfigurations = _.merge(configuration,config);
+			for (var i in webpackConfigurations) {
+				var configuration = framework.modules.require("Webpack.Configurations." + webpackConfigurations[i]);
+				webpackConfigurations = _.merge(configuration, config);
 				loadedWebpackConfigs.push(configuration);
 			}
 
-			return function(callback) { // the callback is never called. When it was called, there was an error using the webpack watch option
-				webpack(loadedWebpackConfigs, function(err, status) {
-					if (err) throw new gutil.PluginError("webpack", err);
-					gutil.log("[webpack]", status.toString({
-						// output options
-					}));
-				});
-			};
+
+			var task = 'webpack';
+			if(!!config.task)
+				task = config.task;
+			return require(`./${task}`)(loadedWebpackConfigs);
 		}
 	};
 }

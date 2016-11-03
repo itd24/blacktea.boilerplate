@@ -5,13 +5,13 @@ import CleanWebpackPlugin from 'clean-webpack-plugin';
 import _ from 'lodash';
 import configmanager from 'blacktea.configmanager';
 
-var rootPath = configmanager.get("common", "rootPath"),
-appsPath = configmanager.get("common", "appPath"),
-distPath = path.resolve(appsPath,"dist","assets");
-
 import CSSLoader from '../Library/Loaders/CSS';
 import SassLoader from '../Library/Loaders/Sass';
 import FontsLoader from '../Library/Loaders/Fonts';
+
+var rootPath = configmanager.get("common", "rootPath"),
+appsPath = configmanager.get("common", "appPath"),
+distPath = path.resolve(appsPath,"dist","assets");
 
 module.exports = {
     context: appsPath,

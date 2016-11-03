@@ -33,7 +33,7 @@ module.exports = function(framework) {
 			var task = 'webpack';
 			if(!!config.task)
 				task = config.task;
-			return require(`./${task}`)(loadedWebpackConfigs);
+			return require(`./${task}`)(loadedWebpackConfigs,config,framework);
 		}
 	};
 }

@@ -4,7 +4,6 @@ import path from 'path';
 import jshint from 'gulp-jshint';
 
 module.exports = function(framework) {
-
 	var appPath = configManager.get("common", "appPath");
 	var sourcePath = path.resolve(appPath, "src/js/*.js");
 	return {

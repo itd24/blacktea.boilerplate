@@ -9,16 +9,18 @@
     "develop": "gulp -build"
   },
   "dependencies": {
+    "babel-runtime": "^6.18.0",
+    "blacktea.configmanager": "^0.1.0",
+    "blacktea.exceptions": "^0.1.1",
+    "blacktea.ns": "^0.1.1",
     "console-debug": "^0.3.3",
     "glob": "^7.0.5",
-    "node-json-db": "^0.7.2",
-    "blacktea.configmanager": "^0.1.0",
-    "blacktea.ns": "^0.1.1",
-    "blacktea.exceptions": "^0.1.1"
+    "node-json-db": "^0.7.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.0.3",
     "babel-core": "^6.18.0",
+    "babel-loader": "^6.2.7",
     "babel-plugin-transform-es2015-arrow-functions": "^6.8.0",
     "babel-plugin-transform-es2015-block-scoped-functions": "^6.8.0",
     "babel-plugin-transform-es2015-block-scoping": "^6.18.0",
@@ -29,6 +31,7 @@
     "babel-plugin-transform-es2015-shorthand-properties": "^6.18.0",
     "babel-plugin-transform-es2015-spread": "^6.8.0",
     "babel-plugin-transform-es2015-template-literals": "^6.8.0",
+    "babel-plugin-transform-runtime": "^6.15.0",
     "babel-preset-es2015": "^6.18.0",
     "browser-sync": "^2.17.5",
     "browser-sync-webpack-plugin": "^1.1.3",

@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import gutil from 'gulp-util';
+import configManager from 'blacktea.configmanager';
 import webpackDevServer from 'webpack-dev-server';
 import browserSyncModule from 'browser-sync';
 import BrowserSyncPlugin from 'browser-sync-webpack-plugin';
@@ -18,11 +19,16 @@ module.exports = function(loadedWebpackConfigs, config, framework) {
 		//**********************browsersync options*************************
 		//******************************************************************
 		var browserSync;
+		var htmlFilesPath = configManager.get("Gulp/panini", "destination");
 		var browserSyncOptions = {
 			// browse to http://localhost:3000/ during development 
 			host: 'localhost',
 			port: browserSyncPort,
-			proxy: `http://localhost:${port}/`
+			proxy: `http://localhost:${port}/`,
+			server:{
+				baseDir:htmlFilesPath,
+				directory:true
+			}
 		};
 		//we push the browser-sync plugin
 		browserSync = new BrowserSyncPlugin(browserSyncOptions, {
@@ -31,7 +37,6 @@ module.exports = function(loadedWebpackConfigs, config, framework) {
 		});
 
 		pubSub.default.listen("triggerReload", function() {
-			console.log("ha, it works!!");
 			var browserSyncInstance = browserSyncModule.get(browserSyncInstanceName);
 			if (!!browserSyncInstance && !!browserSyncInstance.reload)
 				browserSyncInstance.reload();

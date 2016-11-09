@@ -8,6 +8,7 @@ import configmanager from 'blacktea.configmanager';
 import CSSLoader from '../Library/Loaders/CSS';
 import SassLoader from '../Library/Loaders/Sass';
 import FontsLoader from '../Library/Loaders/Fonts';
+import BabelLoader from '../Library/Loaders/Babel';
 
 var rootPath = configmanager.get("common", "rootPath"),
 appsPath = configmanager.get("common", "appPath"),
@@ -30,7 +31,7 @@ module.exports = {
     //*/
     module: {
         loaders: [
-            CSSLoader,SassLoader,FontsLoader
+            CSSLoader,SassLoader,FontsLoader,BabelLoader
         ]
     },
     plugins: [

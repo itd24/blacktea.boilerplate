@@ -12,31 +12,35 @@ import BabelLoader from '../Library/Loaders/Babel';
 
 var rootPath = configmanager.get("common", "rootPath"),
     appsPath = configmanager.get("common", "appPath"),
-    distPath = path.resolve(appsPath, "dist", "assets");
+    relativePath = configmanager.get("common", "publicPath"),
+    distPath = path.resolve(appsPath, "dist", "assets"),
+    publicPath = relativePath+"/dist/assets";
+    console.log(publicPath);
 module.exports = {
     context: appsPath,
     entry: {
         app: [
+            'webpack/hot/dev-server',
+            'webpack-hot-middleware/client',
             "./src/entry.js"
         ]
     },
     devtool: 'source-map',
     watch: false,
     output: {
-        path: distPath,
-        publicPath:"/assets/",
-        filename: "[name].min.js"
+        path: "/",
+        publicPath:publicPath,
+        filename: "bundle.js"
     },
     module: {
         loaders: [
-            CSSLoader(true), SassLoader(true), FontsLoader, BabelLoader
+            CSSLoader(false), SassLoader(false), FontsLoader, BabelLoader
         ]
     },
     plugins: [
-        new CleanWebpackPlugin([distPath], {
-            root: rootPath
-        }),
-        //new webpack.optimize.UglifyJsPlugin({minimize: true}),
-        new ExtractTextPlugin("[name].min.css")
-    ]
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+    ],
+    target:"web"
 };

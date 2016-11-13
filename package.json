@@ -39,6 +39,7 @@
     "css-loader": "^0.23.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "gulp": "^3.9.1",
+    "gulp-html-replace": "^1.6.1",
     "gulp-jshint": "^2.0.2",
     "gulp-load-plugins": "^1.2.4",
     "gulp-util": "^3.0.7",
@@ -53,7 +54,9 @@
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.6",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-middleware": "^1.8.4",
+    "webpack-dev-server": "^1.16.2",
+    "webpack-hot-middleware": "^2.13.2"
   },
   "entryPoints": {},
   "sourceDir": "App/src",

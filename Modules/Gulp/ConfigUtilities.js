@@ -1,5 +1,3 @@
-'use strict'
-
 import moment from 'moment';
 import _ from 'lodash';
 import path from 'path';
@@ -38,7 +36,7 @@ var privateFunctions = {
             var loadedModule = null;
             try {
                 loadedModule = require(path.resolve(Ns.root(), "Modules", "Gulp", "Tasks", task.module))(framework);
-            } catch (e) {
+            } catch (e) {                
                 try {
                     loadedModule = require(path.resolve(Ns.root(), "Modules", "Gulp", "Tasks", task.module, "main"))(framework);
                 } catch (e2) {

@@ -8,6 +8,9 @@ import configManager from 'blacktea.configmanager';
 import _ from 'lodash';
 
 module.exports = function(framework) {
+
+	var configurationLoader = framework.modules.require("Webpack.ConfigurationLoader");
+
 	return {
 		/**
 		 * creates the actual task
@@ -17,23 +20,13 @@ module.exports = function(framework) {
 		 * @return {function}         the function to be used as a gulp task
 		 */
 		run: function(config, gulp, plugins) {
-			config = config || {};
-			var webpackConfigurations = configManager.get("Webpack/main", "usedConfigurations");
-			if (!_.isArray(webpackConfigurations))
-				webpackConfigurations = [webpackConfigurations];
-
-			var loadedWebpackConfigs = [];
-			for (var i in webpackConfigurations) {
-				var configuration = framework.modules.require("Webpack.Configurations." + webpackConfigurations[i]);
-				webpackConfigurations = _.merge(configuration, config);
-				loadedWebpackConfigs.push(configuration);
-			}
-
+			
+			var configurations = configurationLoader.loadUsedConfigurations(framework,"default",config);
 
 			var task = 'webpack';
 			if(!!config.task)
 				task = config.task;
-			return require(`./${task}`)(loadedWebpackConfigs,config,framework);
+			return require(`./${task}`)(configurations,config,framework);
 		}
 	};
 }

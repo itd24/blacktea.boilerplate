@@ -1,3 +1,6 @@
 {
-    "usedConfigurations":"default"
+	"usedConfigurations": {
+		"default": "default",
+		"browsersync": "browsersync"
+	}
 }

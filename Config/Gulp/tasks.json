@@ -1,7 +1,7 @@
 {
-    "main": ["watch","webpack-dev-server"],
+    "main": ["browserSyncWebpack","watch"],
     "used": [
-        "webpack", "webpack-watch", "webpack-dev-server", "jshint", "panini", "watch"
+        "webpack", "webpack-watch", "jshint", "panini", "watch","browserSyncWebpack","reload"
     ],
     "tasks": {
         "webpack": {
@@ -18,20 +18,13 @@
                 "task": "webpackWatch"
             }
         },
-        "webpack-dev-server": {
-            "module": "webpack",
-            "dependencies": [],
-            "args": {
-                "task": "webpackDevServer"
-            }
-        },
         "watch": {
             "module": "gulpwatch",
-            "dependencies": ["panini"],
+            "dependencies": [],
             "args": {
                 "tasks": [{
-                    "tasks": ["panini"],
-                    "path": "{{config.get('common','appPath')}}\\src\\html\\**\\*.html"
+                    "tasks": ["reload"],
+                    "path": "{{config.get('common','themePath')}}\\**\\*.{html,htm}"
                 }]
             }
         },
@@ -39,9 +32,17 @@
             "module": "jshint",
             "dependencies": []
         },
-        "panini":{
-            "module":"panini",
-            "dependencies":[]
+        "panini": {
+            "module": "panini",
+            "dependencies": []
+        },
+        "browserSyncWebpack": {
+            "module": "browserSyncWebpack",
+            "dependencies": []
+        },
+        "reload": {
+            "module": "reload",
+            "dependencies": []
         }
     }
 }

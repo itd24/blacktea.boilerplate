@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"experimentalDecorators": true,
+		"typeRoots": [
+	      "./node_modules/@types"
+	    ],
+		"types": [
+			"hammerjs",
+			"jasmine",
+			"node",
+			"core-js",
+			"selenium-webdriver",
+			"source-map",
+			"uglify-js",
+			"webpack"
+		]
+	},
+	"exclude": [
+		"node_modules",
+		"dist"
+	],
+	"files": [
+		"typings/index.d.ts"
+	]
+}

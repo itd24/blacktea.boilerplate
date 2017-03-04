@@ -10,10 +10,10 @@ import htmlreplace from 'gulp-html-replace';
 module.exports = function(framework) {
 
 	var appsPath = configmanager.get("common", "appPath"),
-		relativePath = configmanager.get("common", "publicPath"),
-		publicPath = relativePath+"dist/assets",
+		relativePath = configmanager.get("common", "publicPath"),		
 		host = configmanager.get("Webpack/browsersync", "host"),
 		port = configmanager.get("Webpack/browsersync", "port"),
+		publicPath = relativePath+"/dist/assets",
 		target = configmanager.get("Webpack/browsersync", "proxy/target"),
 		useProxy = configmanager.get("Webpack/browsersync", "useProxy"),
 		server = configmanager.get("Webpack/browsersync", "server");

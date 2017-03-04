@@ -23,7 +23,7 @@ module.exports = {
     context: appsPath,
     entry: {
         app: [
-            //'webpack/hot/dev-server',
+            'webpack/hot/dev-server',
             'webpack-hot-middleware/client',
             "./src/entry.js"
         ]

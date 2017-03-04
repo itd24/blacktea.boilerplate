@@ -1,9 +1,8 @@
 {
-    "timestamp": "1479030747",
-    "dateTime": "13.11.2016 10:52:27",
-    "rootPath": "",
-    "themePath": "",
+    "timestamp": "1488646149",
+    "dateTime": "04.03.2017 17:49:09",
+    "rootPath": "E:\\HOMEWORK\\projects\\personalPresentation",
     "appDirectory": "Apps",
     "appPath": "{{config.get('common','rootPath')}}\\{{config.get('common','appDirectory')}}",
-    "publicPath": "/{{config.get('common','appDirectory')}}"
+    "publicPath": "/"
 }

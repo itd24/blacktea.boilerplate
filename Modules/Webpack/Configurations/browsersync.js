@@ -4,13 +4,15 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import _ from 'lodash';
 import configmanager from 'blacktea.configmanager';
-import autoprefixer from 'autoprefixer';
+import autoprefixer from 'autoprefixer'; 
 
 import CSSLoader from '../Library/Loaders/CSS';
 import SassLoader from '../Library/Loaders/Sass';
-import FontsLoader from '../Library/Loaders/Fonts';
+import FontLoaders from '../Library/Loaders/Fonts';
 import BabelLoader from '../Library/Loaders/Babel';
-import TypeScriptLoader from '../Library/Loaders/TypeScript';
+import WebpackHotAcceptLoader from '../Library/Loaders/WebpackHotAccept';
+import HtmlLoader from '../Library/Loaders/Html';
+import VueJSLoader from '../Library/Loaders/VueJS';
 
 var rootPath = configmanager.get("common", "rootPath"),
     appsPath = configmanager.get("common", "appPath"),
@@ -21,14 +23,18 @@ module.exports = {
     context: appsPath,
     entry: {
         app: [
-            'webpack/hot/dev-server',
+            //'webpack/hot/dev-server',
             'webpack-hot-middleware/client',
             "./src/entry.js"
         ]
     },
     devtool: 'source-map',
     resolve: {
-        extensions: ['', '.webpack.js', '.web.js', '.ts', '.js']
+        extensions: ['', '.webpack.js', '.web.js', '.js'],        
+        alias: {
+            //'vue$': 'vue/dist/vue.common',
+            //'jquery': 'jquery/dist/jquery'
+        }
     },
     watch: false,
     output: {
@@ -45,8 +51,10 @@ module.exports = {
             FontLoaders.ttf,
             FontLoaders.eot,
             FontLoaders.svg,
-            TypeScriptLoader,
-            BabelLoader
+            BabelLoader,
+            WebpackHotAcceptLoader,
+            HtmlLoader,
+            VueJSLoader
         ]
     },
     plugins: [

@@ -4,7 +4,6 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
 import _ from 'lodash';
 import configmanager from 'blacktea.configmanager';
-import autoprefixer from 'autoprefixer';
 
 import CSSLoader from '../Library/Loaders/CSS';
 import SassLoader from '../Library/Loaders/Sass';
@@ -16,7 +15,7 @@ var rootPath = configmanager.get("common", "rootPath"),
     appsPath = configmanager.get("common", "appPath"),
     relativePath = configmanager.get("common", "publicPath"),
     distPath = path.resolve(appsPath, "dist", "assets"),
-    publicPath = relativePath + "/dist/assets";
+    publicPath = relativePath+"/dist/assets";
 module.exports = {
     context: appsPath,
     entry: {
@@ -31,19 +30,19 @@ module.exports = {
     watch: false,
     output: {
         path: distPath,
-        publicPath: "/assets/",
+        publicPath:"/assets/",
         filename: "[name].min.js"
     },
     module: {
         loaders: [
-            CSSLoader(false),
-            SassLoader(false),
+            CSSLoader(true), 
+            SassLoader(true),             
             FontLoaders.woff,
             FontLoaders.woff2,
             FontLoaders.ttf,
             FontLoaders.eot,
             FontLoaders.svg,
-            TypeScriptLoader,
+            TypeScriptLoader, 
             BabelLoader
         ]
     },
@@ -56,12 +55,10 @@ module.exports = {
     ],
     postcss: function(webpack) {
         return [
-            autoprefixer({
-                browsers: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3']
-            })
+          autoprefixer({browsers: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3']})
         ]
-    },
+      },
     sassLoader: {
         includePaths: [path.resolve(rootPath, "node_modules")]
-    }
+      }
 };

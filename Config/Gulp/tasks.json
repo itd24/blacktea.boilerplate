@@ -1,5 +1,5 @@
 {
-    "main": ["browserSyncWebpack","watch"],
+    "main": ["browserSyncWebpack","panini","watch"],
     "used": [
         "webpack", "webpack-watch", "jshint", "panini", "watch","browserSyncWebpack","reload"
     ],
@@ -23,8 +23,8 @@
             "dependencies": [],
             "args": {
                 "tasks": [{
-                    "tasks": ["reload"],
-                    "path": "{{config.get('common','themePath')}}\\**\\*.{html,htm}"
+                    "tasks": ["panini"],
+                    "path": "{{config.get('common','appPath')}}\\src\\**\\*.{html,htm}"
                 }]
             }
         },

@@ -11,7 +11,12 @@ module.exports = function(framework) {
 
 	var appsPath = configmanager.get("common", "appPath"),
 		relativePath = configmanager.get("common", "publicPath"),
-		publicPath = relativePath + "/dist/assets";
+		publicPath = relativePath+"dist/assets",
+		host = configmanager.get("Webpack/browsersync", "host"),
+		port = configmanager.get("Webpack/browsersync", "port"),
+		target = configmanager.get("Webpack/browsersync", "proxy/target"),
+		useProxy = configmanager.get("Webpack/browsersync", "useProxy"),
+		server = configmanager.get("Webpack/browsersync", "server");
 
 	var configurationLoader = framework.modules.require("Webpack.ConfigurationLoader");
 	var pubSub = framework.require("Common.Events");
@@ -20,62 +25,39 @@ module.exports = function(framework) {
 		run: function(config, gulp, plugins) {
 
 			var configurations = configurationLoader.loadUsedConfigurations(framework, "browsersync", config);
-			var bundler = webpack(configurations);
+
+			var bundler = webpack(configurations[0]);
 			var instance;
 
 			return function() {
 
-				var browserSyncConfig = configmanager.get("Webpack/browsersync", "/");
-
-
-				var initializationObject = {
-					host: browserSyncConfig.host,
-					port: browserSyncConfig.port,
-					proxy: {
-						'target': target,
-						middleware: [
-							webpackDevMiddleware(bundler, {
-								publicPath: publicPath,
-								stats: {
-									colors: true
-								}
-							}),
-							webpackHotMiddleware(bundler)
-						]
-					},
-					//*/
+				var configuration = {
+					host: host,
+					port: port
 				};
 
-				if (!!port.proxy) {
+				var usedMiddleware = [
+							webpackDevMiddleware(bundler, {
+								publicPath: publicPath,
+								stats: {
+									colors: true
+								}
+							}),
+							webpackHotMiddleware(bundler)
+						];
 
-					initializationObject.proxy = {
-						target: port.proxy.target,
-						middleware: [
-							webpackDevMiddleware(bundler, {
-								publicPath: publicPath,
-								stats: {
-									colors: true
-								}
-							}),
-							webpackHotMiddleware(bundler)
-						]
-					};
-				} else if (!!port.server) {
-					initializationObject.server = {
-						engine.baseDir = path.resolve(appsPath, "dist");
-						middleware: [
-							webpackDevMiddleware(bundler, {
-								publicPath: publicPath,
-								stats: {
-									colors: true
-								}
-							}),
-							webpackHotMiddleware(bundler)
-						]
+				if(!!useProxy){
+					configuration.proxy = {
+						'target': target,
+						middleware: usedMiddleware
 					};
 				}
+				else{
+					server.middleware = usedMiddleware;
+					configuration.server = server;
+				}
 
-				instance = browserSync.init(initializationObject);
+				instance = browserSync.init(configuration);
 
 				pubSub.default.listen("triggerReload", function() {
 					if (!!instance && !!instance.reload)

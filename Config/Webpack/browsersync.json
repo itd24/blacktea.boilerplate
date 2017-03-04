@@ -1,7 +1,11 @@
 {
 	"host": "localhost",
 	"port":3000,
+	"useProxy":false,
+	"server":{
+		"baseDir":"Apps/dist/html"
+	},
 	"proxy":{
-		"target":""
+		"target":"http://existingServer.dev:8080/"
 	}
 }

@@ -1,7 +1,7 @@
 {
-    "main": ["browserSyncWebpack","panini","watch"],
+    "main": ["browserSyncWebpack", "panini", "imagemin", "watch"],
     "used": [
-        "webpack", "webpack-watch", "jshint", "panini", "watch","browserSyncWebpack","reload"
+        "webpack", "webpack-watch", "jshint", "panini", "watch", "browserSyncWebpack", "reload", "imagemin"
     ],
     "tasks": {
         "webpack": {
@@ -23,8 +23,14 @@
             "dependencies": [],
             "args": {
                 "tasks": [{
-                    "tasks": ["panini"],
+                    "tasks": ["panini","imagemin"],
                     "path": "{{config.get('common','appPath')}}\\src\\**\\*.{html,htm}"
+                }, {
+                    "tasks": ["imagemin"],
+                    "path": "{{config.get('common','appPath')}}\\src\\img\\*.*"
+                },{
+                    "tasks": ["imagemin"],
+                    "path": "{{config.get('common','appPath')}}\\src\\scss\\**\\*.scss"
                 }]
             }
         },
@@ -34,7 +40,7 @@
         },
         "panini": {
             "module": "panini",
-            "dependencies": []
+            "dependencies": ["clean"]
         },
         "browserSyncWebpack": {
             "module": "browserSyncWebpack",
@@ -42,6 +48,14 @@
         },
         "reload": {
             "module": "reload",
+            "dependencies": []
+        },
+        "imagemin": {
+            "module": "imagemin",
+            "dependencies": ["clean"]
+        },
+        "clean": {
+            "module": "clean",
             "dependencies": []
         }
     }

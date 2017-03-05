@@ -3,7 +3,10 @@
 	"port":3000,
 	"useProxy":false,
 	"server":{
-		"baseDir":"Apps/dist/html"
+		"baseDir":"Apps/dist/html",
+		"routes":{
+			"/dist":"Apps/dist"
+		}
 	},
 	"proxy":{
 		"target":"http://existingServer.dev:8080/"

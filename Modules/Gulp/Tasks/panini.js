@@ -21,6 +21,7 @@ module.exports = function(framework) {
 	return {
 		run: function(config, gulp, plugins) {
 			return function(done) {
+				panini.refresh();
 				var stream = gulp.src(path.resolve(rootPath, "**", "*.{html,hbs,handlebars}"))
 					.pipe(panini(paths))
 					.pipe(gulp.dest(destinationPath));

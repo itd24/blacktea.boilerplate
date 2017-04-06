@@ -13,5 +13,6 @@
       "allowTopLevelThis": true
     }]
   ],
+	"presets": ["stage-2"],
   "compact": false
 }
